@@ -2,13 +2,12 @@
 
 # Título: VinillosFerrer
 
----
+
 
 ## Descripción del proyecto
 
 La web simula una tienda online de vinilos que ofrece a los usuarios una experiencia completa de navegación, consulta y compra de discos. Además, cuenta con un panel de administración para la gestión del catálogo musical y los pedidos realizados por los usuarios.
 
----
 
 ## Objetivos del proyecto
 
