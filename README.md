@@ -20,7 +20,7 @@ La web simula una tienda online de vinilos que ofrece a los usuarios una experie
 - Crear una interfaz clara, intuitiva y visualmente atractiva, adaptada a dispositivos móviles.
 - Permitir búsquedas y filtros que faciliten encontrar álbumes según diferentes criterios (artista, género, título...).
 
----
+
 
 ## Funcionalidades principales
 
@@ -40,7 +40,7 @@ La web simula una tienda online de vinilos que ofrece a los usuarios una experie
 - Gestión de stock de vinilos.
 - Visualización de pedidos realizados por usuarios.
 
----
+
 
 ## Tecnologías 
 
