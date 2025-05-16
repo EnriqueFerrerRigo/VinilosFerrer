@@ -1,50 +1,50 @@
 @extends('layouts.app')
 
+@section('title', 'Carrito')
+
 @section('content')
-<h1>Carrito de Compra</h1>
+<h2 class="mb-4 text-center fw-bold">Tu Carrito</h2>
 
-@if(session('success'))
-    <div class="alert alert-success">{{ session('success') }}</div>
-@endif
-
-@if($items->isEmpty())
-    <p>Tu carrito está vacío.</p>
+@if($carrito->isEmpty())
+  <p class="text-center">Tu carrito está vacío.</p>
 @else
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Álbum</th>
-                <th>Cantidad</th>
-                <th>Precio Unitario</th>
-                <th>Subtotal</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($items as $item)
-                <tr>
-                    <td>{{ $item->album->titulo }}</td>
-                    <td>{{ $item->cantidad }}</td>
-                    <td>{{ $item->album->precio }} €</td>
-                    <td>{{ number_format($item->cantidad * $item->album->precio, 2) }} €</td>
-                    <td>
-                        <form action="{{ route('carrito.update', $item) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('PATCH')
-                            <input type="number" name="cantidad" value="{{ $item->cantidad }}" min="1" style="width:60px;">
-                            <button type="submit" class="btn btn-sm btn-primary">Actualizar</button>
-                        </form>
+  <table class="table table-striped align-middle">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio unitario</th>
+        <th>Total</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($carrito as $item)
+      <tr>
+        <td>{{ $item->album->titulo }} - {{ $item->album->artista->nombre }}</td>
+        <td>
+          <form method="POST" action="{{ route('carrito.update', $item->id) }}">
+            @csrf
+            @method('PATCH')
+            <input type="number" name="cantidad" min="1" value="{{ $item->cantidad }}" class="form-control form-control-sm" style="width: 70px;" onchange="this.form.submit()">
+          </form>
+        </td>
+        <td>{{ number_format($item->album->precio, 2, ',', '.') }} €</td>
+        <td>{{ number_format($item->album->precio * $item->cantidad, 2, ',', '.') }} €</td>
+        <td>
+          <form method="POST" action="{{ route('carrito.destroy', $item->id) }}">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger btn-sm">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
 
-                        <form action="{{ route('carrito.destroy', $item) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+  <div class="text-end fw-bold fs-5">
+    Total: {{ number_format($carrito->sum(fn($item) => $item->album->precio * $item->cantidad), 2, ',', '.') }} €
+  </div>
 @endif
-
 @endsection

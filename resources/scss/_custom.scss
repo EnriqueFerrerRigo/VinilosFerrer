@@ -1,0 +1,32 @@
+body {
+  font-family: $fuente-base;
+  background-color: $gris-claro;
+  color: $color-principal;
+  margin: 0;
+  padding: 0;
+}
+
+header, footer {
+  background-color: $gris-medio;
+  padding: 1rem 0;
+}
+
+h2 {
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  color: $negro;
+}
+
+.card {
+  border-radius: 0.5rem;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.btn-dark {
+  background-color: $color-principal;
+  border-color: $color-principal;
+
+  &:hover {
+    background-color: darken($color-principal, 10%);
+  }
+}

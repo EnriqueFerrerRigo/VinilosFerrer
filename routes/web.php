@@ -7,6 +7,12 @@ use App\Http\Controllers\CancionController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\PedidosAlbumController;
 use App\Http\Controllers\CarritoTemporalController;
+use App\Http\Controllers\ArtistaController;
+
+
+Route::get('/artistas', [ArtistaController::class, 'index'])->name('artistas.index');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/carrito', [CarritoTemporalController::class, 'index'])->name('carrito.index');

@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vinilos Ferrer - @yield('title')</title>
-  <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+  @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 </head>
 <body>
   <header class="bg-light py-3 mb-4">
@@ -39,8 +38,6 @@
     <small>&copy; 2025 Vinilos Ferrer. Todos los derechos reservados.</small>
   </footer>
 
-  <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('js/app.js') }}"></script>
   @yield('scripts')
 </body>
 </html>
