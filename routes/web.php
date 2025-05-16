@@ -8,11 +8,30 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\PedidosAlbumController;
 use App\Http\Controllers\CarritoTemporalController;
 use App\Http\Controllers\ArtistaController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\GeneroController;
+use App\Http\Controllers\FavoritoController;
 
+// Rutas para Géneros (CRUD completo)
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::resource('generos', GeneroController::class);
+});
+
+// Rutas para Favoritos (usuario autenticado)
+Route::middleware('auth')->group(function () {
+    Route::get('favoritos', [FavoritoController::class, 'index'])->name('favoritos.index');
+    Route::post('favoritos', [FavoritoController::class, 'store'])->name('favoritos.store');
+    Route::delete('favoritos/{favorito}', [FavoritoController::class, 'destroy'])->name('favoritos.destroy');
+});
+// Ruta pública para home
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Rutas públicas para géneros y álbumes (frontend)
+Route::get('/generos', [GeneroController::class, 'index'])->name('generos.index');
+Route::get('/albumes', [AlbumController::class, 'index'])->name('albumes.index');
 
 Route::get('/artistas', [ArtistaController::class, 'index'])->name('artistas.index');
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/carrito', [CarritoTemporalController::class, 'index'])->name('carrito.index');
@@ -25,19 +44,12 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('pedidos_album', PedidosAlbumController::class);
 });
 
-
-
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('canciones', CancionController::class);
 });
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('pedidos', PedidoController::class);
-});
-
-
-Route::get('/', function () {
-    return view('welcome');
 });
 
 Route::get('/dashboard', function () {
@@ -52,17 +64,13 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 });
 
-use App\Http\Controllers\ArtistaController;
-
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('artistas', ArtistaController::class);
 });
-
 
 /*Route::get('/test-admin', function () {
     return auth()->check() ? auth()->user()->rol : 'No autenticado';

@@ -26,7 +26,7 @@ class PedidoController extends Controller
      */
     public function create()
     {
-        // Puedes decidir si permites crear pedido directamente o solo desde carrito
+        // Puedes decidir si permites crear pedido directamente o solo desde carrito, esta funcionalidad seguramente la quite
         return view('pedidos.create');
     }
 
@@ -45,7 +45,7 @@ class PedidoController extends Controller
         $pedido->usuario_id = Auth::id();
         $pedido->save();
 
-        // Aquí añadirías lógica para vincular álbumes al pedido con la tabla pedidos_album
+        // Aquí añadiré lógica para vincular álbumes al pedido con la tabla pedidos_album
 
         return redirect()->route('pedidos.index')->with('success', 'Pedido creado con éxito');
     }
@@ -97,7 +97,6 @@ class PedidoController extends Controller
         $validated = $request->validate([
             'fecha' => 'required|date',
             'total' => 'required|numeric|min:0',
-            // Otros campos que quieras validar
         ]);
 
         $pedido->update($validated);
@@ -143,7 +142,7 @@ class PedidoController extends Controller
         'usuario_id' => $usuario_id,
         'fecha' => now(),
         'total' => $total,
-        'estado' => 'Pendiente', // si tienes este campo
+        'estado' => 'Pendiente', 
     ]);
 
     // Crear registros en pedidos_album

@@ -9,7 +9,7 @@ class Artista extends Model
 {
     use HasFactory;
 
-    protected $table = 'artistas'; // explícito porque el nombre no es plural en inglés
+    protected $table = 'artistas'; // explícito porque el nombre no es plural en inglés!!
 
     protected $fillable = [
         'nombre',

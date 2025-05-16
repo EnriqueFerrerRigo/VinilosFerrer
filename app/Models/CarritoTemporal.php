@@ -9,7 +9,7 @@ class CarritoTemporal extends Model
 {
     use HasFactory;
 
-    protected $table = 'carrito_temporal'; // asegúrate de poner el nombre correcto
+    protected $table = 'carrito_temporal'; 
 
     protected $fillable = ['usuario_id', 'album_id', 'cantidad'];
 
