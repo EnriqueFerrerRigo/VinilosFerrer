@@ -3,6 +3,31 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\CancionController;
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PedidosAlbumController;
+use App\Http\Controllers\CarritoTemporalController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('/carrito', [CarritoTemporalController::class, 'index'])->name('carrito.index');
+    Route::post('/carrito', [CarritoTemporalController::class, 'store'])->name('carrito.store');
+    Route::patch('/carrito/{carrito}', [CarritoTemporalController::class, 'update'])->name('carrito.update');
+    Route::delete('/carrito/{carrito}', [CarritoTemporalController::class, 'destroy'])->name('carrito.destroy');
+});
+
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::resource('pedidos_album', PedidosAlbumController::class);
+});
+
+
+
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::resource('canciones', CancionController::class);
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('pedidos', PedidoController::class);
+});
 
 
 Route::get('/', function () {

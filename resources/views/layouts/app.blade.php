@@ -1,36 +1,46 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vinilos Ferrer - @yield('title')</title>
+  <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+</head>
+<body>
+  <header class="bg-light py-3 mb-4">
+    <nav class="container d-flex justify-content-between align-items-center">
+      <a href="{{ url('/') }}" class="text-decoration-none text-dark fs-4 fw-bold">Vinilos Ferrer</a>
+      <ul class="nav">
+        <li class="nav-item"><a href="{{ url('/') }}" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="{{ url('/generos') }}" class="nav-link">Géneros</a></li>
+        <li class="nav-item"><a href="{{ url('/albumes') }}" class="nav-link">Álbumes</a></li>
+        @guest
+          <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Iniciar sesión</a></li>
+          <li class="nav-item"><a href="{{ route('register') }}" class="nav-link">Registrarse</a></li>
+        @else
+          <li class="nav-item"><a href="{{ url('/carrito') }}" class="nav-link">Carrito</a></li>
+          <li class="nav-item">
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button type="submit" class="btn btn-link nav-link">Cerrar sesión</button>
+            </form>
+          </li>
+        @endguest
+      </ul>
+    </nav>
+  </header>
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+  <main class="container">
+    @yield('content')
+  </main>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+  <footer class="bg-light py-3 mt-5 text-center">
+    <small>&copy; 2025 Vinilos Ferrer. Todos los derechos reservados.</small>
+  </footer>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
-    </body>
+  <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('js/app.js') }}"></script>
+  @yield('scripts')
+</body>
 </html>

@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('canciones', function (Blueprint $table) {
+        Schema::create('carrito_temporal', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('album_id');
-            $table->string('titulo');
-            $table->integer('duracion'); // en segundos, por ejemplo
+            $table->unsignedBigInteger('usuario_id'); // usuario dueño del carrito
+            $table->unsignedBigInteger('album_id');   // producto añadido (álbum)
+            $table->integer('cantidad')->default(1);  // cantidad de ese álbum
             $table->timestamps();
-        
+
+            // Foreign keys
+            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('album_id')->references('id')->on('albumes')->onDelete('cascade');
         });
-        
     }
 
     /**
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('canciones');
+        Schema::dropIfExists('carrito_temporal');
     }
 };
