@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminDashboardController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,15 +23,21 @@ require __DIR__.'/auth.php';
 
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
-    Route::get('/admin', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 });
+
+use App\Http\Controllers\ArtistaController;
+
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::resource('artistas', ArtistaController::class);
+});
+
 
 /*Route::get('/test-admin', function () {
     return auth()->check() ? auth()->user()->rol : 'No autenticado';
 });
 */
-Route::get('/test-admin', function () {
+/*Route::get('/test-admin', function () {
     return 'Middleware isAdmin funciona';
 })->middleware(['auth', 'isAdmin']);
+*/
