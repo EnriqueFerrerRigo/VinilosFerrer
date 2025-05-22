@@ -72,11 +72,3 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('artistas', ArtistaController::class);
 });
 
-/*Route::get('/test-admin', function () {
-    return auth()->check() ? auth()->user()->rol : 'No autenticado';
-});
-*/
-/*Route::get('/test-admin', function () {
-    return 'Middleware isAdmin funciona';
-})->middleware(['auth', 'isAdmin']);
-*/
