@@ -16,11 +16,6 @@ class AlbumController extends Controller
         return view('albums.index', compact('albums'));
 
     }
-
-    // Luego añadiremos los métodos create, store, edit, update y destroy
-
-
-
     /**
      * Show the form for creating a new resource.
      */

@@ -67,9 +67,9 @@ class PedidoController extends Controller
         return view('pedidos.show', compact('pedido'));
     }
 
-    /**
-     * Mostrar formulario para editar un pedido
-     */
+    
+    // Mostrar formulario para editar un pedido
+     
     public function edit(Pedido $pedido)
     {
         $user = Auth::user();
@@ -82,9 +82,7 @@ class PedidoController extends Controller
         return view('pedidos.edit', compact('pedido'));
     }
 
-    /**
-     * Actualizar un pedido
-     */
+    // Actualizar un pedido
     public function update(Request $request, Pedido $pedido)
     {
         $user = Auth::user();

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// Importamos los modelos Album y Cancion para poder usarlos en el controlador
 use App\Models\Album;
 use App\Models\Cancion;
 use Illuminate\Http\Request;

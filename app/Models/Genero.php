@@ -13,7 +13,7 @@ class Genero extends Model
         'nombre'
     ];
 
-    // Relación: un género tiene muchos álbumes
+    // La relación entre estos es que un género tiene muchos álbumes
     public function albumes()
     {
         return $this->hasMany(Album::class);
