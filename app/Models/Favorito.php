@@ -10,14 +10,14 @@ class Favorito extends Model
     use HasFactory;
 
     protected $fillable = [
-        'usuario_id',
+        'user_id', /*usuario_id*/
         'album_id',
     ];
 
     // Relación: un favorito pertenece a un usuario
-    public function usuario()
+    public function user() /*usuario*/
     {
-        return $this->belongsTo(User::class, 'usuario_id');
+        return $this->belongsTo(User::class, 'user_id'/*usuario_id*/);
     }
 
     // Relación: un favorito pertenece a un álbum

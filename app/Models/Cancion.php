@@ -9,11 +9,15 @@ class Cancion extends Model
 {
     use HasFactory;
 
+        
+    protected $table = 'canciones';
+
     protected $fillable = [
         'album_id',
         'titulo',
         'duracion',
     ];
+
 
     public function album()
     {

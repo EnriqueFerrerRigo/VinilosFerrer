@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Pedido;
+use App\Models\Favorito;
+
 
 
 
@@ -54,6 +56,11 @@ class User extends Authenticatable
         return $this->hasMany(\App\Models\Pedido::class, 'usuario_id');
     }
 
+    // Relación con la tabla favoritos
+    public function favoritos()
+    {
+        return $this->hasMany(Favorito::class, 'user_id');
+    }
     
 
 }
