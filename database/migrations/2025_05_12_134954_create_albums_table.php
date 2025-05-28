@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('titulo');
             $table->unsignedBigInteger('artista_id');
             $table->unsignedBigInteger('genero_id');
-            $table->year('anio');
+            $table->year('año');
             $table->string('imagen')->nullable();
             $table->decimal('precio', 8, 2);
             $table->integer('stock');

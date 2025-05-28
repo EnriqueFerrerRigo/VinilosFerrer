@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('titulo');
             $table->integer('duracion'); // en segundos, por ejemplo
             $table->timestamps();
-        
             $table->foreign('album_id')->references('id')->on('albumes')->onDelete('cascade');
         });
         

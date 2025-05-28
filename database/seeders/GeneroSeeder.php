@@ -14,13 +14,9 @@ class GeneroSeeder extends Seeder
      */
     public function run()
     {
-        Genero::create([
-            'nombre' => 'Rock'
-        ]);
-
-        Genero::create([
-            'nombre' => 'Pop'
-        ]);
+        Genero::create(['nombre' => 'Rock']);
+        Genero::create(['nombre' => 'Pop']);
+        Genero::create(['nombre' => 'Jazz']);
 
         // Agregaré más géneros aquí
     }

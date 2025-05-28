@@ -1,0 +1,71 @@
+.bg-light {
+  background-color: #e7e7e7 !important;
+}
+
+.profile-header {
+  padding: 3rem 1rem;
+  background-color: #e7e7e7;
+  text-align: center;
+
+  h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: #555;
+  }
+}
+
+.pedido-box {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+
+  .fw-bold {
+    font-size: 1.1rem;
+  }
+
+  small {
+    color: #666;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+  }
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  .btn {
+    padding: 0.5rem 1.2rem;
+    font-weight: 500;
+  }
+}
+
+// Tabla de pedidos detallada
+.table-striped {
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.95rem;
+
+  th {
+    background-color: #f3f3f3;
+    font-weight: 600;
+  }
+
+  td {
+    vertical-align: middle;
+  }
+
+  .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.85rem;
+  }
+}

@@ -102,9 +102,8 @@ class PedidoController extends Controller
         return redirect()->route('pedidos.index')->with('success', 'Pedido actualizado');
     }
 
-    /**
-     * Borrar un pedido
-     */
+    
+    // Borrar un pedido
     public function destroy(Pedido $pedido)
     {
         $user = Auth::user();

@@ -1,18 +1,36 @@
+{{-- resources/views/generos.blade.php --}}
 @extends('layouts.app')
 
-@section('title', 'Géneros')
-
 @section('content')
-<h2 class="mb-4 text-center fw-bold">Géneros</h2>
-<div class="row row-cols-1 row-cols-md-3 g-4">
-  @foreach($generos as $genero)
-    <div class="col">
-      <div class="card h-100 text-center shadow-sm">
-        <div class="card-body d-flex flex-column justify-content-center">
-          <h5 class="card-title">{{ $genero->nombre }}</h5>
+<div class="generos-header py-5 text-center">
+    <h1 class="fw-bold">EXPLORA POR GÉNERO</h1>
+    <p class="lead">¡Encuentra vinilos para tu estilo musical favorito!</p>
+</div>
+
+<div class="container mb-5">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 text-center">
+        @php
+            $generos = [
+                ['nombre' => 'ROCK', 'img' => 'rock.jpg'],
+                ['nombre' => 'POP', 'img' => 'pop.jpg'],
+                ['nombre' => 'HIP HOP', 'img' => 'hiphop.jpg'],
+                ['nombre' => 'R&B', 'img' => 'rnb.jpg'],
+                ['nombre' => 'ELECTRÓNICA', 'img' => 'electronica.jpg'],
+                ['nombre' => 'JAZZ', 'img' => 'jazz.jpg'],
+            ];
+        @endphp
+
+        @foreach ($generos as $genero)
+        <div class="col">
+            <div class="genero-card position-relative overflow-hidden rounded-4">
+                <img src="{{ asset('images/generos/' . $genero['img']) }}" alt="{{ $genero['nombre'] }}" class="img-fluid">
+                <div class="overlay d-flex flex-column justify-content-center align-items-center text-white">
+                    <h2 class="fw-bold">{{ $genero['nombre'] }}</h2>
+                    <a href="#" class="btn btn-light mt-2">Explorar</a>
+                </div>
+            </div>
         </div>
-      </div>
+        @endforeach
     </div>
-  @endforeach
 </div>
 @endsection
