@@ -12,6 +12,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\FavoritoController;
+use Illuminate\Support\Facades\Auth;
 
 // Rutas para Géneros (CRUD completo)
 Route::middleware(['auth', 'isAdmin'])->group(function () {

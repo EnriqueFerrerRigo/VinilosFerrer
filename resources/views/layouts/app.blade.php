@@ -21,7 +21,15 @@
           <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Iniciar sesión</a></li>
           <li class="nav-item"><a href="{{ route('register') }}" class="nav-link">Registrarse</a></li>
         @else
-          <li class="nav-item"><a href="{{ url('/carrito') }}" class="nav-link">Carrito</a></li>
+          <li class="nav-item">
+            <a href="{{ url('/carrito') }}" class="nav-link position-relative">
+              Carrito
+              <span id="contador-carrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                0
+              </span>
+            </a>
+          </li>
+
           <li class="nav-item">
             <form method="POST" action="{{ route('logout') }}">
               @csrf

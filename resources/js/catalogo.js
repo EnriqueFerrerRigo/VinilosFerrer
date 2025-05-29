@@ -20,13 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = await respuesta.json();
 
                 if (data.success) {
-                    mostrarToast(data.message || 'Álbum añadido al carrito correctamente.');
+                    actualizarContadorCarrito(); // ✅ Solo si fue exitoso
+                    alert(data.message);
                 } else {
-                    mostrarToast('Error al añadir al carrito.', true);
+                    alert('Error al añadir al carrito');
                 }
+
             } catch (error) {
-                console.error('Error de conexión:', error);
-                mostrarToast('Error de conexión con el servidor.', true);
+                alert('Error de conexión');
+                console.error(error);
             }
         });
     });
