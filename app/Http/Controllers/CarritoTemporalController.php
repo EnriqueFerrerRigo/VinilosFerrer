@@ -55,4 +55,32 @@ class CarritoTemporalController extends Controller
 
         return back()->with('success', 'Artículo eliminado del carrito.');
     }
+
+    public function agregarViaAjax(Request $request){
+    
+        $request->validate([
+            'album_id' => 'required|exists:albumes,id',
+        ]);
+
+        $userId = Auth::id();
+        $albumId = $request->input('album_id');
+
+        $item = CarritoTemporal::where('usuario_id', $userId)
+            ->where('album_id', $albumId)
+            ->first();
+
+        if ($item) {
+            $item->cantidad += 1;
+            $item->save();
+        } else {
+            CarritoTemporal::create([
+                'usuario_id' => $userId,
+                'album_id' => $albumId,
+                'cantidad' => 1,
+            ]);
+        }
+
+        return response()->json(['success' => true, 'message' => 'Álbum añadido al carrito']);
+    }
+
 }

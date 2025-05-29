@@ -1,0 +1,30 @@
+
+// resources/scss/_dashboard.scss
+
+.dashboard {
+  text-align: center;
+  padding: 4rem 1rem;
+
+  h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 0.6rem 2rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}

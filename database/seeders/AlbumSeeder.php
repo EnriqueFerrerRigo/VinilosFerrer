@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace Database\Seeders;
 
 use App\Models\Album;
@@ -7,11 +7,7 @@ use Illuminate\Database\Seeder;
 
 class AlbumSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+
     public function run()
     {
         Album::create([
@@ -33,7 +29,18 @@ class AlbumSeeder extends Seeder
             'precio' => 25.00,
             'stock' => 150
         ]);
+        
+        Album::create([
+            'titulo' => 'Running Away',
+            'artista_id' => 3, 
+            'genero_id' => 3, 
+            'año' => 2005,
+            'imagen' => 'albumes/JamesHollowVinilo.png',
+            'precio' => 15.00,
+            'stock' => 150
+        ]);
 
         // Agregaré más álbumes aquí
     }
 }
+*/

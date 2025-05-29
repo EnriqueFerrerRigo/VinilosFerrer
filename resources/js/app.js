@@ -11,3 +11,4 @@ import './catalogo';
 import './generoespecifico';
 import './generos';
 import './home';
+import './dashboard';

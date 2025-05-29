@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace Database\Seeders;
 
 use App\Models\Artista;
@@ -7,11 +7,7 @@ use Illuminate\Database\Seeder;
 
 class ArtistaSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+    
     public function run()
     {
         Artista::create([
@@ -29,3 +25,4 @@ class ArtistaSeeder extends Seeder
         // Agregaré más artistas aquí
     }
 }
+*/

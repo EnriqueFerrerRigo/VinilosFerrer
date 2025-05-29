@@ -119,7 +119,7 @@ class PedidoController extends Controller
     }
     public function crearDesdeCarrito()
 {
-    $usuario_id = auth()->id();
+    $usuario_id = Auth::id();
 
     // Obtener items del carrito
     $items = CarritoTemporal::where('usuario_id', $usuario_id)->get();

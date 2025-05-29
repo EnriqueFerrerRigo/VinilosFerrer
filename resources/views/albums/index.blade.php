@@ -14,11 +14,9 @@
           <p class="card-text">Artista: {{ $album->artista->nombre }}</p>
           <p class="card-text">Género: {{ $album->genero->nombre }}</p>
           <p class="card-text fw-bold">Precio: {{ number_format($album->precio, 2, ',', '.') }} €</p>
-          <form method="POST" action="{{ route('carrito.index') }}">
-            @csrf
-            <input type="hidden" name="album_id" value="{{ $album->id }}">
-            <button type="submit" class="btn btn-primary w-100">Añadir al carrito</button>
-          </form>
+          <button class="btn btn-primary w-100 agregar-al-carrito" data-id="{{ $album->id }}">
+            Añadir al carrito
+          </button>
         </div>
       </div>
     </div>

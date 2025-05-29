@@ -18,6 +18,20 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('generos', GeneroController::class);
 });
 
+Route::post('/carrito/agregar-ajax', [CarritoTemporalController::class, 'agregarViaAjax'])->name('carrito.agregar.ajax');
+
+Route::get('/carrito/contador', function () {
+    $userId = Auth::id();
+    $total = \App\Models\CarritoTemporal::where('usuario_id', $userId)->sum('cantidad');
+    return response()->json(['total' => $total]);
+})->middleware('auth');
+
+
+Route::post('/carrito/agregar-ajax', [CarritoTemporalController::class, 'agregarViaAjax'])
+    ->middleware('auth')
+    ->name('carrito.agregar.ajax');
+
+
 // Rutas para Favoritos (usuario autenticado)
 Route::middleware('auth')->group(function () {
     Route::get('favoritos', [FavoritoController::class, 'index'])->name('favoritos.index');

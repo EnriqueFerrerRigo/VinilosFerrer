@@ -1,14 +1,61 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const filtros = document.querySelectorAll('.form-select');
-    const buscador = document.querySelector('input[type=search]');
+    document.querySelectorAll('.agregar-al-carrito').forEach(boton => {
+        boton.addEventListener('click', async (e) => {
+            e.preventDefault();
 
-    filtros.forEach(filtro => {
-        filtro.addEventListener('change', () => {
-            console.log(`Filtro ${filtro.name || filtro.className} cambiado a ${filtro.value}`);
+            const albumId = boton.dataset.id;
+            const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            try {
+                const respuesta = await fetch('/carrito/agregar-ajax', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': token,
+                        'Accept': 'application/json',
+                    },
+                    body: JSON.stringify({ album_id: albumId })
+                });
+
+                const data = await respuesta.json();
+
+                if (data.success) {
+                    mostrarToast(data.message || 'Álbum añadido al carrito correctamente.');
+                } else {
+                    mostrarToast('Error al añadir al carrito.', true);
+                }
+            } catch (error) {
+                console.error('Error de conexión:', error);
+                mostrarToast('Error de conexión con el servidor.', true);
+            }
         });
     });
 
-    buscador?.addEventListener('keyup', () => {
-        console.log(`Buscando: ${buscador.value}`);
-    });
+    function mostrarToast(mensaje, esError = false) {
+        const toastElement = document.getElementById('toastCarrito');
+        const toastBody = toastElement.querySelector('.toast-body');
+
+        // Cambia estilo si es error
+        toastElement.classList.remove('bg-success', 'bg-danger');
+        toastElement.classList.add(esError ? 'bg-danger' : 'bg-success');
+
+        toastBody.textContent = mensaje;
+
+        const toast = new bootstrap.Toast(toastElement);
+        toast.show();
+        actualizarContadorCarrito();
+
+    }
+
+    async function actualizarContadorCarrito() {
+        try {
+            const respuesta = await fetch('/carrito/contador');
+            const data = await respuesta.json();
+            const contador = document.getElementById('contador-carrito');
+            contador.textContent = data.total || 0;
+        } catch (error) {
+            console.error('Error al obtener el contador del carrito:', error);
+        }
+    }
+
 });
