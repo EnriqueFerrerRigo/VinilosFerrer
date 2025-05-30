@@ -11,12 +11,12 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 text-center">
         @php
             $generos = [
-                ['nombre' => 'ROCK', 'img' => 'rock.jpg'],
-                ['nombre' => 'POP', 'img' => 'pop.jpg'],
-                ['nombre' => 'HIP HOP', 'img' => 'hiphop.jpg'],
-                ['nombre' => 'R&B', 'img' => 'rnb.jpg'],
-                ['nombre' => 'ELECTRÓNICA', 'img' => 'electronica.jpg'],
-                ['nombre' => 'JAZZ', 'img' => 'jazz.jpg'],
+                ['nombre' => 'ROCK', 'img' => 'RockBG.png'],
+                ['nombre' => 'POP', 'img' => 'popBG.png'],
+                ['nombre' => 'HIP HOP', 'img' => 'HipHopBG.png'],
+                ['nombre' => 'R&B', 'img' => 'rnbBG.png'],
+                ['nombre' => 'ELECTRÓNICA', 'img' => 'ElectronicaBG.png'],
+                ['nombre' => 'JAZZ', 'img' => 'JazzBG.png'],
             ];
         @endphp
 

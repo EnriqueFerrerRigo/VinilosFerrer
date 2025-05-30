@@ -29,4 +29,9 @@ class Pedido extends Model
     {
         return $this->hasMany(PedidosAlbum::class, 'pedido_id');
     }
+
+    protected $casts = [
+        'fecha' => 'datetime',
+    ];
+
 }

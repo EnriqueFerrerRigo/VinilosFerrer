@@ -1,24 +1,104 @@
+
+
+// NAVBAR estilos
+.navbar {
+  background-color: #d3d3d3 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.nav-link {
+  color: #000 !important;
+  font-weight: bold;
+
+  &:hover {
+    color: #555 !important;
+  }
+}
+
+// HERO SECTION
 .hero-section {
-  background: url('/images/bg-texture.png') repeat center center;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  background: url("/public/images/texturaBanner.png") center center no-repeat;
   background-size: cover;
-  border-bottom: 1px solid #dee2e6;
+  padding: 80px 0 120px 0; // más espacio abajo
+  position: relative;
+  color: black;
+  overflow-x: hidden;
+  margin-top: 0 !important;
 }
 
 .hero-title {
-  font-weight: 700;
-  font-size: 2.8rem;
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.hero-section .btn {
+  border-radius: 20px;
+  font-weight: 600;
+  padding: 10px 20px;
+  min-width: 140px;
+}
+
+.btn-dark {
+  background-color: black;
+  border: none;
+  color: white;
+}
+
+.btn-dark:hover {
+  background-color: #333;
+}
+
+.btn-outline-dark {
+  background-color: rgba(128, 128, 128, 0.4);
+  border: 1px solid gray;
+  color: black;
+}
+
+.btn-outline-dark:hover {
+  background-color: gray;
+  color: white;
 }
 
 .hero-vinyl {
-  max-width: 200px;
-  transform: rotate(-5deg);
+  max-width: 250px;
+  /* Para que la imagen esté siempre visible y centrada verticalmente */
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .section-title {
-  font-weight: 600;
   font-size: 1.5rem;
+  font-weight: bold;
   margin-bottom: 1.5rem;
-  text-align: center;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+}
+
+.album-card img {
+  height: 220px;
+  object-fit: cover;
+}
+
+.album-card p {
+  margin: 0;
+}
+
+footer {
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* Separación extra entre bloques de contenido */
+.container + .container {
+  margin-top: 3rem;
+}
+
+// MARGIN EXTRA PARA SEPARAR TOP VENTAS DEL JUMBOTRON
+.container-top-ventas {
+  margin-top: 4rem;
 }

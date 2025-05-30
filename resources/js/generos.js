@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.genero-card .btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const genero = btn.closest('.genero-card').querySelector('h2').textContent.trim();
-            alert('Explorar género: ' + genero);
-        });
-    });
+  // Elimina cualquier alerta o redirección para usuarios no logueados
+  // El enlace ya lleva directo a la página del género
+
+  // Si quieres alguna funcionalidad extra, puedes agregarla aquí
 });

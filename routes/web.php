@@ -14,6 +14,12 @@ use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\FavoritoController;
 use Illuminate\Support\Facades\Auth;
 
+// Ruta pública para mostrar un género
+Route::get('/generos/{id}', [GeneroController::class, 'show'])->name('generos.show');
+
+
+Route::get('/albums/catalogo', [AlbumController::class, 'catalogo'])->name('albums.catalogo');
+
 // Rutas para Géneros (CRUD completo)
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::resource('generos', GeneroController::class);
