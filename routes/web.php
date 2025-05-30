@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Auth;
 // Ruta pública para mostrar un género
 Route::get('/generos/{id}', [GeneroController::class, 'show'])->name('generos.show');
 
+// Ruta pública para listado de géneros
+Route::get('/generos', [GeneroController::class, 'index'])->name('generos.index');
+
+
 
 Route::get('/albums/catalogo', [AlbumController::class, 'catalogo'])->name('albums.catalogo');
 
@@ -48,8 +52,7 @@ Route::middleware('auth')->group(function () {
 // Ruta pública para home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Rutas públicas para géneros y álbumes (frontend)
-Route::get('/generos', [GeneroController::class, 'index'])->name('generos.index');
+// Rutas públicas para álbumes (frontend)
 Route::get('/albumes', [AlbumController::class, 'index'])->name('albumes.index');
 
 Route::get('/artistas', [ArtistaController::class, 'index'])->name('artistas.index');

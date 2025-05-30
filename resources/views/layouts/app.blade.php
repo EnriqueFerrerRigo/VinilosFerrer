@@ -41,7 +41,7 @@
     </nav>
   </header>
 
-  <main class="container">
+  <main class="flex-grow-1">
     @yield('content')
   </main>
 

@@ -13,6 +13,14 @@ class GeneroController extends Controller
         return view('generos.index', compact('generos'));
     }
 
+    public function show($id)
+    {
+        $genero = Genero::findOrFail($id);
+        $albumes = $genero->albumes()->with('artista')->get();
+
+        return view('generos.show', compact('genero', 'albumes'));
+    }
+
     public function create()
     {
         return view('generos.create');
@@ -44,6 +52,7 @@ class GeneroController extends Controller
 
         return redirect()->route('generos.index')->with('success', 'Género actualizado correctamente');
     }
+
 
     public function destroy(Genero $genero)
     {
